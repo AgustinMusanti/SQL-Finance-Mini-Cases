@@ -1,5 +1,4 @@
---  FINTECH / BILLETERA DIGITAL  |  Dataset ficticio
---  SQL Server
+--  Mini Caso #2 FINTECH / BILLETERA DIGITAL  |  Dataset ficticio
 --  ~10.000 transacciones | ~750 usuarios | Año 2025
 
 USE master;
