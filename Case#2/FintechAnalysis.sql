@@ -146,16 +146,22 @@ GO
 -- ------------------------------------------------------------
 --  3. Segmentación de usuarios según actividad
 -- ------------------------------------------------------------
+DECLARE @fecha_corte DATE = '2025-12-31';
+
 SELECT
-    usuario_id,
-    COUNT(*) AS cantidad_transacciones,
+    u.usuario_id,
+    COUNT(t.transaccion_id) AS cantidad_transacciones_90d,
     CASE
-        WHEN COUNT(*) >= 20 THEN 'Power User'
-        WHEN COUNT(*) >= 10 THEN 'Active User'
-        ELSE                     'Casual User'
+        WHEN COUNT(t.transaccion_id) >= 20 THEN 'Actividad alta'
+        WHEN COUNT(t.transaccion_id) >= 10 THEN 'Actividad media'
+        WHEN COUNT(t.transaccion_id) > 0  THEN 'Actividad baja'
+        ELSE                                   'Sin actividad reciente'
     END AS segmento_usuario
-FROM transacciones
-GROUP BY usuario_id;
+FROM usuarios u
+LEFT JOIN transacciones t
+    ON u.usuario_id = t.usuario_id
+    AND t.fecha >= DATEADD(DAY, -90, @fecha_corte)
+GROUP BY u.usuario_id;
 GO
 
 -- ------------------------------------------------------------
