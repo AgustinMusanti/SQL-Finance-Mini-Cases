@@ -152,8 +152,8 @@ SELECT
     u.usuario_id,
     COUNT(t.transaccion_id) AS cantidad_transacciones_90d,
     CASE
-        WHEN COUNT(t.transaccion_id) >= 20 THEN 'Actividad alta'
-        WHEN COUNT(t.transaccion_id) >= 10 THEN 'Actividad media'
+        WHEN COUNT(t.transaccion_id) >= 12 THEN 'Actividad alta'
+        WHEN COUNT(t.transaccion_id) >= 6 THEN 'Actividad media'
         WHEN COUNT(t.transaccion_id) > 0  THEN 'Actividad baja'
         ELSE                                   'Sin actividad reciente'
     END AS segmento_usuario
