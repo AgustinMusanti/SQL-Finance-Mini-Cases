@@ -149,20 +149,23 @@ GO
 DECLARE @fecha_corte DATE = '2025-12-31';
 
 SELECT
-    u.usuario_id,
-    COUNT(t.transaccion_id) AS cantidad_transacciones_90d,
+    u.usuario_id, u.edad, u.ciudad,
+    COUNT(t.transaccion_id)  AS cantidad_transacciones_90d,
+    MAX(t.fecha)             AS ultima_transaccion,
     CASE
         WHEN COUNT(t.transaccion_id) >= 12 THEN 'Actividad alta'
-        WHEN COUNT(t.transaccion_id) >= 6 THEN 'Actividad media'
-        WHEN COUNT(t.transaccion_id) > 0  THEN 'Actividad baja'
-        ELSE                                   'Sin actividad reciente'
-    END AS segmento_usuario
+        WHEN COUNT(t.transaccion_id) >= 6  THEN 'Actividad media'
+        WHEN COUNT(t.transaccion_id) > 0   THEN 'Actividad baja'
+        ELSE                                    'Sin actividad reciente'
+    END AS segmento
 FROM usuarios u
 LEFT JOIN transacciones t
-    ON u.usuario_id = t.usuario_id
+    ON  u.usuario_id = t.usuario_id
     AND t.fecha >= DATEADD(DAY, -90, @fecha_corte)
-GROUP BY u.usuario_id;
-GO
+GROUP BY
+    u.usuario_id, u.edad, u.ciudad
+ORDER BY
+    cantidad_transacciones_90d DESC;
 
 -- ------------------------------------------------------------
 --  4. Volumen mensual de pagos
