@@ -1,5 +1,5 @@
 -- ============================================================================
--- SIMULACRO TÉCNICO SQL #1 — Preparación entrevista Banco Macro
+-- SIMULACRO TÉCNICO SQL #1 — Preparación entrevista Banco
 -- Banco ficticio: "Banco Río Paraná"
 -- Fecha de referencia (hoy): 2026-07-01
 -- ============================================================================
