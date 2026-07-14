@@ -1,5 +1,5 @@
 -- ============================================================================
--- SIMULACRO TÉCNICO SQL #2 — Preparación entrevista Banco Macro
+-- SIMULACRO TÉCNICO SQL #2 — Preparación entrevista Banco
 -- Dominio: Tarjetas de Crédito
 -- Fecha de referencia (hoy): 2026-07-01
 -- ============================================================================
