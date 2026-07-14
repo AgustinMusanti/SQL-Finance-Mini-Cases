@@ -1,5 +1,5 @@
 -- ============================================================================
--- SIMULACRO TÉCNICO SQL #3 — Preparación entrevista Banco Macro
+-- SIMULACRO TÉCNICO SQL #3 — Preparación entrevista Banco
 -- Dominio: Créditos y Mora
 -- Fecha de referencia (hoy): 2026-07-01
 -- ============================================================================
